@@ -1,6 +1,3 @@
-# Prerequisites
-*.d
-
 # Compiled Object files
 *.slo
 *.lo
@@ -30,3 +27,24 @@
 *.exe
 *.out
 *.app
+
+# Configuração local do vscode
+.vscode/launch.json
+
+#configuração local do Qt
+*.user
+
+#compilados
+bin/*
+BuyList*
+dep/*
+*/dep
+
+
+.idea/*
+cmake-build-debug/
+
+
+
+#arquivos da IDE qt
+ProjetoAppMP.files
