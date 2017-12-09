@@ -105,6 +105,162 @@ void GerenteBD::Run(){
 	for(unsigned int i = 0; i < uLogado.GetListaAberta().produtos.size(); i++){
 		cout << uLogado.GetListaAberta().produtos[i]->GetNome() << endl;
 	}
+	int op;
+	do{
+		system("cls | clear");
+		cout << "\n(1) Acrescentar produto" << endl;
+		cout << "(2) Alterar produto" << endl;
+		cout << "(3) Excluir produto" << endl;
+		cout << "(4) Salvar lista" << endl;
+		cout << "(5) Finalizar compra." << endl;
+		cout << "(6) Sair do menu." << endl;
+		scanf("%d", &op);
+		switch(op){
+			case 1:
+				{int cod, i = 0;
+				do{
+					cod = i;
+					i++;
+				} while(uLogado.GetListaAberta().ExisteProduto(cod));
+				cout << "Insira o nome: ";
+				std::cin.clear();
+				std::cin.sync();
+				string _nome;
+				cin >> _nome;
+				cout << "Insira o preco: ";
+				float _preco;
+				scanf("%f.2", &_preco);
+				cout << "Insira a marca: ";
+				std::cin.clear();
+				std::cin.sync();
+				string _marca;
+				cin >> _marca;
+				cout << "Insira a quantidade: ";
+				int qtd;
+				scanf("%d", &qtd);
+				Produto* prod;
+				prod = new Produto(cod, _nome, _preco, _marca, qtd);
+				uLogado.GetListaAberta().AdicionarProduto(*prod);}
+				break;
+
+			case 2:
+				int op2;
+				do{
+					cout << "\n(1) Alterar nome" << endl;
+					cout << "(2) Alterar preco" << endl;
+					cout << "(3) Alterar marca" << endl;
+					cout << "(4) Alterar quantidade" << endl;
+					cout << "(5) Terminar alteracao\n" << endl;
+					scanf("%d", &op2);
+					switch(op2){
+						case 1:
+							cout << "Escolha o produto: " << endl;
+							uLogado.GetListaAberta().MostrarTodos();
+							{int cod;
+							if(uLogado.GetListaAberta().ExisteProduto(cod)){
+								scanf("%d", &cod);
+								cout << "Digite o nome: ";
+								string nome;
+								std::cin.clear();
+								std::cin.sync();
+								uResposta.clear();
+								cin >> uResposta;
+								uLogado.GetListaAberta().produtos[cod]->SetNome(nome);
+								cout << "Dados alterados com sucesso!" << endl;
+							}}
+							break;
+
+						case 2:
+							cout << "Escolha o produto: " << endl;
+							uLogado.GetListaAberta().MostrarTodos();
+							{int cod;
+							scanf("%d", &cod);
+							if(uLogado.GetListaAberta().ExisteProduto(cod)){
+								cout << "Digite o preco";
+								float preco;
+								scanf("%f.2", &preco);
+								uLogado.GetListaAberta().produtos[cod]->SetPreco(preco);
+								cout << "Dados alterados com sucesso!" << endl;
+							}}
+							break;
+
+						case 3:
+							cout << "Escolha o produto: " << endl;
+							uLogado.GetListaAberta().MostrarTodos();
+							{int cod;
+							scanf("%d", &cod);
+							if(uLogado.GetListaAberta().ExisteProduto(cod)){
+								int qtd;
+								scanf("%d", &qtd);
+								cout << "Digite a quantidade";
+								uLogado.GetListaAberta().produtos[cod]->SetPreco(qtd);
+								cout << "Dados alterados com sucesso!" << endl;
+							}}
+							break;
+
+						case 4:
+							cout << "Escolha o produto: " << endl;
+							uLogado.GetListaAberta().MostrarTodos();
+							{int cod;
+							scanf("%d", &cod);
+							if(uLogado.GetListaAberta().ExisteProduto(cod)){
+								cout << "Digite a marca: ";
+								string marca;
+								std::cin.clear();
+								std::cin.sync();
+								uResposta.clear();
+								cin >> uResposta;
+								uLogado.GetListaAberta().produtos[cod]->SetMarca(marca);
+								cout << "Dados alterados com sucesso!" << endl;
+							}}
+							break;	
+
+						default:
+							system("cls | clear");
+							break;			
+					}
+				} while(op2 < 5);
+				break;
+
+			case 3:
+				cout << "Escolha o produto: " << endl;
+				uLogado.GetListaAberta().MostrarTodos();
+				{int cod;
+				scanf("%d", &cod);
+				if(uLogado.GetListaAberta().ExisteProduto(cod)){
+					cout << "COD_BARRAS: " << uLogado.GetListaAberta().produtos[cod]->GetCodBarras() << endl;
+					cout << "NOME: " << uLogado.GetListaAberta().produtos[cod]->GetNome() << endl;
+					cout << "PRECO: " << uLogado.GetListaAberta().produtos[cod]->GetPreco() << endl;
+					cout << "MARCA: " << uLogado.GetListaAberta().produtos[cod]->GetMarca() << endl;
+					cout << "QUANTIDADE: " << uLogado.GetListaAberta().produtos[cod]->quantidade << endl;
+					cout << "\nDeseja mesmo escluir o produto? (S/N)" << endl;
+					std::cin.clear();
+					std::cin.sync();
+					uResposta.clear();
+					cin >> uResposta;
+					if(uResposta[0] == 's' || uResposta[0] == 'S'){
+						uLogado.GetListaAberta().ExcluirProduto(cod);
+					}
+					else{
+						cout << "Produto nao excluido." << endl;
+					}
+				}}
+				break;
+
+			case 4:
+				uLogado.SalvarLista(&uLogado.GetListaAberta());
+				cout << "Lista salva com sucesso!" << endl;
+				break;
+
+			case 5:
+				cout << "Compra finalizada." << endl;
+				break;
+
+			case 6:
+				op = 6;
+				break;
+		}
+	} while(op < 6);
 }
 
 

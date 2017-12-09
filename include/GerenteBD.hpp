@@ -1,3 +1,16 @@
+// WINDOWS
+#ifdef _WIN32
+	#include <windows.h>
+	
+//LINUX
+#elif __linux__
+	#include <unistd.h>
+	
+#else
+	#error "Unknown compiler"
+	
+#endif
+
 #include "json.hpp"
 #include "Usuario.hpp"
 #include <fstream>

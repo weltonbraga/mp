@@ -32,3 +32,25 @@ void Lista::ExcluirProduto(int cod){
      cout << "Produto nao encontrado!" << endl;
 }
 
+bool Lista::ExisteProduto(int cod){
+     bool existe = false;
+     for(unsigned int i = 0; i <= produtos.size() || existe; i++){
+          for(unsigned int j = 0; j < produtos.size() || existe; j++){
+               if((int) i == produtos[j]->GetCodBarras()){
+                    existe = true;
+                    return existe;
+               }
+          }
+     }
+     return existe;
+}
+
+void Lista::MostrarTodos() const{
+     for(unsigned int i = 0; i < produtos.size(); i++){
+          cout << "(" << produtos[i]->GetCodBarras() << ") " << produtos[i]->GetNome();
+          cout << " - " << produtos[i]->GetPreco();
+          cout << " - " << produtos[i]->GetMarca();
+          cout << " - " << produtos[i]->quantidade << endl;
+     }
+}
+
