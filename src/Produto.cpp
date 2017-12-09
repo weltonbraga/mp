@@ -1,11 +1,11 @@
 #include "Produto.hpp"
 
-Produto::Produto(int codBarras, string nome, float preco, string marca, int qtd)
-          : quantidade(qtd)
-          , codBarras(codBarras)
-          , nome(nome)
-          , preco(preco)
-          , marca(marca) {
+Produto::Produto(int _codBarras, string _nome, float _preco, string _marca, int _qtd)
+          : quantidade(_qtd)
+          , codBarras(_codBarras)
+          , nome(_nome)
+          , preco(_preco)
+          , marca(_marca) {
 
 }
 
@@ -21,23 +21,23 @@ string Produto::GetNome(void) const{
      return nome;
 }
 
-void Produto::SetNome(string novoNome){
-     nome = novoNome;
+void Produto::SetNome(string _nome){
+     nome = _nome;
 }
 
 float Produto::GetPreco(void) const{
      return preco;
 }
 
-void Produto::SetPreco(float novoPreco){
-     preco = novoPreco;
+void Produto::SetPreco(float _preco){
+     preco = _preco;
 }
 
 string Produto::GetMarca(void) const{
      return marca;
 }
 
-void Produto::SetMarca(string novaMarca){
-     marca = novaMarca;
+void Produto::SetMarca(string _marca){
+     marca = _marca;
 }
 

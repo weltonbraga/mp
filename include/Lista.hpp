@@ -24,7 +24,7 @@ class Lista{
 
 			Inicializa as variáveis protegidas.
 		*/
-          Lista(string nome = "(lista sem nome)");
+          Lista(string _nome);
           /**
 			\brief Destrutor
 
@@ -36,7 +36,7 @@ class Lista{
            * 
            * Adiciona um produto à lista de compras
           */
-          void AdicionarProduto(Produto);
+          void AdicionarProduto(Produto&);
           /** brief Exclui um produto
            * \param int Código de barras do produto a ser excluído da lista
            * 
@@ -54,8 +54,8 @@ class Lista{
            * 
            * Redefine o nome recebido como sendo o novo nome do produto
           */
-          void SetNome(string novoNome);
-          std::vector<Produto> produtos;
+          void SetNome(string _nome);
+          std::vector<Produto*> produtos;/**< Vetor de produtos cadastrados nesta lista*/
 
      private:
           string nome;

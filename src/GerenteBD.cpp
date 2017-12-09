@@ -24,28 +24,35 @@ void GerenteBD::Run(){
 	Usuario uLogado;
 	string uLogin;
 	string uSenha;
+	string uResposta;
 	cout << "Insira o login: ";
+	std::cin.clear(); // unset failbit
+   	// std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	std::cin.sync();
 	cin >> uLogin;
 	if ( gBD.ExisteUsuario( uLogin ) ) { //usuario cadastrado
 		cout << "Insira sua senha: " << endl;
 		do{
-            getline(cin, uSenha);
-        }while(uSenha == "");
-		
-		if (gBD.ChecaSenha(uLogin, uSenha)) {
-			uLogado = gBD.RetornaUsuario(uLogin);
-			cout << "Bem-vindo, " << uLogado.GetNome() << endl ; 
-		} else {
-			cout << "Senha inválida." << endl;
-		}
+			std::cin.clear(); // unset failbit
+			std::cin.sync();
+			getline(cin, uSenha);
+			if (gBD.ChecaSenha(uLogin, uSenha)) {
+				uLogado = gBD.RetornaUsuario(uLogin);
+			} else {
+				cout << "Senha inválida." << endl;
+			}
+		}while(uSenha == "" || !gBD.ChecaSenha(uLogin, uSenha));
+
 	} else {
 		cout << "Usuario não cadastrado." << endl;
-		string uResposta;
 		while (true)
 		{
 			cout << "Cadastrar novo usuario? S/N: ";
+			std::cin.clear(); // unset failbit
+   			std::cin.sync();
+			uResposta.clear();
 			cin >> uResposta;
-			if (uResposta == "s" || uResposta == "S") {
+			if (uResposta[0] == 's' || uResposta[0] == 'S') {
 				uLogado = gBD.NovoUsuario( uLogin );
 				break;
 			}
@@ -53,7 +60,51 @@ void GerenteBD::Run(){
 				break;
 			}
 		}
-	} 
+	}
+	cout << "Bem vindo, " << uLogado.GetNome() << "!\n" << endl;
+	if(uLogado.listas.size() == 0){
+		uResposta.clear();
+		uResposta[0] = 'n';
+	}
+	else{
+		cout << "Voce tem " << uLogado.listas.size() << " listas salvas. Deseja restaurar alguma? (S/N)";
+		std::cin.clear(); // unset failbit
+   		std::cin.sync();
+		uResposta.clear();
+		cin >> uResposta;
+	}
+	if(uResposta[0] == 's' || uResposta[0] == 'S'){
+		cout << "Digite o numero da lista que deseja abrir:" << endl;
+		for(unsigned int i = 0; i < uLogado.listas.size(); i++){
+			cout << "(" << i << ")" << uLogado.listas[i]->GetNome() << endl;
+		}
+		unsigned int n;
+		scanf("%u", &n);
+		uLogado.AbrirLista(uLogado.listas[n]);
+	}
+	else{
+		cout << "Deseja cadastrar uma nova lista? (Se nao, saira do programa) (S/N)";
+		std::cin.clear(); // unset failbit
+   		std::cin.sync();
+		uResposta.clear();
+		cin >> uResposta;
+		if(uResposta[0] == 's' || uResposta[0] == 'S'){
+			cout << "Digite o nome da lista: ";
+			string novaLista;
+			std::cin.clear(); // unset failbit
+   			std::cin.sync();
+			cin >> novaLista;
+			uLogado.CriarLista(novaLista);
+			cout << "Lista criada com sucesso. Que tal acrescentar alguns itens?" << endl;
+		}
+		else{
+			exit(0);
+		}
+	}
+	cout << "Lista " << uLogado.GetListaAberta().GetNome() << endl;
+	for(unsigned int i = 0; i < uLogado.GetListaAberta().produtos.size(); i++){
+		cout << uLogado.GetListaAberta().produtos[i]->GetNome() << endl;
+	}
 }
 
 

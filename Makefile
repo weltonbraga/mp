@@ -28,7 +28,7 @@ OBJ_FILES= $(addprefix $(BIN_PATH)/,$(notdir $(CPP_FILES:.cpp=.o)))
 DEP_FILES = $(wildcard $(DEP_PATH)/*.d)
 
 #Nome do executável
-EXEC = BuyList
+EXEC = projeto
 
 #-------------------------------------------------------------
 #Caso o sistema seja windows

@@ -23,7 +23,7 @@ class Produto{
 
 			Inicializa as variáveis protegidas.
 		*/
-          Produto(int codBarras, string nome, float preco, string marca, int qtd = 0);
+          Produto(int _codBarras, string _nome, float _preco, string _marca, int _qtd = 0);
           /**
 			\brief Destrutor
 
@@ -47,7 +47,7 @@ class Produto{
            * 
            * Redefine o nome recebido como sendo o novo nome do produto
           */
-          void SetNome(string novoNome);
+          void SetNome(string _nome);
           /** brief Obtém o preço do produto
            * \return float Número correspondente ao preço
            * 
@@ -59,7 +59,7 @@ class Produto{
            * 
            * Redefine o número decimal recebido como sendo o novo preço do produto
           */
-          void SetPreco(float novoPreco);
+          void SetPreco(float _preco);
           /** brief Obtém a marca do produto
            * \return string String contendo a marca do produto
            * 
@@ -71,7 +71,7 @@ class Produto{
            * 
            * Redefine a marca recebida como sendo a nova marca do produto
           */
-          void SetMarca(string novaMarca);
+          void SetMarca(string _marca);
 
           int quantidade;/**< Quantidade do produto na lista*/
 

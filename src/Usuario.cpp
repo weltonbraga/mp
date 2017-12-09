@@ -7,6 +7,7 @@ Usuario::Usuario() {
 Usuario::Usuario(string login, string nome) {
 	this->nome = nome;
 	this->login = login;
+	listaAberta = nullptr;
 }
 
 Usuario::Usuario(const Usuario &usuario) {
@@ -26,6 +27,10 @@ string Usuario::GetSenha() {
 	return senha;
 }
 
+Lista& Usuario::GetListaAberta(){
+	return *listaAberta;
+}
+
 void Usuario::SetNome(string nome) {
 	this->nome = nome;
 }
@@ -37,3 +42,17 @@ void Usuario::SetLogin(string login) {
 void Usuario::SetSenha(string senha) {
 	this->senha = senha;
 }
+
+void Usuario::CriarLista(string _nome){
+	Lista* lista = new Lista(_nome);
+	AbrirLista(lista);
+}
+
+void Usuario::SalvarLista(Lista* lista){
+	listas.push_back(lista);
+}
+
+void Usuario::AbrirLista(Lista* lista){
+	listaAberta = lista;
+}
+

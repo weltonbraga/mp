@@ -1,6 +1,9 @@
 #include "json.hpp"
-#include <fstream>
 #include "Usuario.hpp"
+#include <fstream>
+#include <iostream>
+#include <string>
+#include <cstdio>
 
 using json = nlohmann::json;
 using namespace std;
