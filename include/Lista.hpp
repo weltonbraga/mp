@@ -18,7 +18,7 @@ using std::endl;
 
 class Lista{
      public:
-
+          Lista();
           /**
 			\brief Construtor
                \param nome Parâmetro opcional. Nome do produto.
@@ -75,8 +75,8 @@ class Lista{
            * Exibe os produtos desta lista
           */
           void MostrarTodos() const;
-
-          std::vector<Produto*> produtos;/**< Vetor de produtos cadastrados nesta lista*/
+          int RetornaIdProduto(int cod);
+          std::vector<Produto> produtos;/**< Vetor de produtos cadastrados nesta lista*/
 
      private:
           string nome;

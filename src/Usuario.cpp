@@ -1,13 +1,19 @@
 #include "Usuario.hpp"
+//#define DEBUG
+#ifdef DEBUG
+	#define DEBUG_PRINT(x) do{cout << x << endl;}while(0)
+#else
+	#define DEBUG_PRINT(x) 
+#endif
 
 Usuario::Usuario() {
 
 }
-
+//(string _nome) : nome (_nome) {
 Usuario::Usuario(string login, string nome) {
 	this->nome = nome;
 	this->login = login;
-	listaAberta = nullptr;
+	//listaAberta = Lista();
 }
 
 Usuario::Usuario(const Usuario &usuario) {
@@ -28,7 +34,7 @@ string Usuario::GetSenha() {
 }
 
 Lista& Usuario::GetListaAberta(){
-	return *listaAberta;
+	return listaAberta;
 }
 
 void Usuario::SetNome(string nome) {
@@ -44,15 +50,19 @@ void Usuario::SetSenha(string senha) {
 }
 
 void Usuario::CriarLista(string _nome){
-	Lista* lista = new Lista(_nome);
-	AbrirLista(lista);
-}
-
-void Usuario::SalvarLista(Lista* lista){
+	Lista lista(_nome);
 	listas.push_back(lista);
+	listaAberta=listas.back();
 }
 
-void Usuario::AbrirLista(Lista* lista){
-	listaAberta = lista;
+void Usuario::SalvarLista(Lista& lista){
+	DEBUG_PRINT("		SalvarLista:"<< lista.GetNome());
+	listas.push_back(lista);
+	DEBUG_PRINT("		SalvarLista FIM");
+}
+
+void Usuario::AbrirLista(unsigned int n){
+	listaAberta = listas[n];
+	listas.erase(listas.begin()+n);
 }
 

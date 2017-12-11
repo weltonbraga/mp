@@ -57,4 +57,10 @@ public:
 	Usuario RetornaUsuario( string _login );
 	Usuario NovoUsuario( string _login);
 	static void Run();
+	static void LimpaTela();
+	void SalvaListas(Usuario& uLogado);
+	void MenuListas(Usuario& uLogado);
+	void CarregaListas(Usuario& uLogado);
+	
+	static vector<Lista> json_para_vector( json& entrada);
 };

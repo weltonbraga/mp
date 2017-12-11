@@ -1,1 +1,1 @@
-{"qwe":{"nome":"qwe","senha":"123"},"wolf":{"nome":"Wolf Wolf","senha":"batman123"}}
+{"teste":{"listas":[{"nome":"Natal","produtos":[{"codBarras":22,"marca":"pão doce","nome":"Panetone","preco":1.99,"quantidade":100}]},{"nome":"ano novo","produtos":[{"codBarras":77,"marca":"kicaldo","nome":"feijão preto","preco":8.9,"quantidade":6},{"codBarras":22,"marca":"kicaldo","nome":"arroz","preco":1.99,"quantidade":14}]}],"nome":"UsuarioTeste","senha":"teste"}}

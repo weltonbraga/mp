@@ -23,7 +23,7 @@ class Produto{
 
 			Inicializa as variáveis protegidas.
 		*/
-          Produto(int _codBarras, string _nome, float _preco, string _marca, int _qtd = 0);
+          Produto(int _codBarras, string _nome, double _preco, string _marca, int _qtd = 0);
           /**
 			\brief Destrutor
 
@@ -49,17 +49,17 @@ class Produto{
           */
           void SetNome(string _nome);
           /** brief Obtém o preço do produto
-           * \return float Número correspondente ao preço
+           * \return double Número correspondente ao preço
            * 
            * Retorna o número decimal correspondente ao preço do produto
           */
-          float GetPreco(void) const;
+          double GetPreco(void) const;
           /** brief Redefine o preço do produto
-           * \param float Número correspondente ao novo preço
+           * \param double Número correspondente ao novo preço
            * 
            * Redefine o número decimal recebido como sendo o novo preço do produto
           */
-          void SetPreco(float _preco);
+          void SetPreco(double _preco);
           /** brief Obtém a marca do produto
            * \return string String contendo a marca do produto
            * 
@@ -78,7 +78,7 @@ class Produto{
      private:
           int codBarras;/**< Chave primária do produto. Número referente ao código de barras*/
           string nome;/**< Nome do produto*/
-          float preco;/**< Preço médio do produto*/
+          double preco;/**< Preço médio do produto*/
           string marca;/**< Marca do produto*/
 
 };

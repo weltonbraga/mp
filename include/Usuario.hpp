@@ -28,10 +28,10 @@ private:
 	*	\brief Senha do usuário.
 	*/
 	string senha;
-	Lista* listaAberta;/**< Lista que está sendo manipulada pelo usuário*/
+	Lista listaAberta;/**< Lista que está sendo manipulada pelo usuário*/
 
 public:
-	std::vector<Lista*> listas;/**< Vetor de listas salvas pelo usuário.*/
+	std::vector<Lista> listas;/**< Vetor de listas salvas pelo usuário.*/
 
 	
 	/*!
@@ -96,7 +96,7 @@ public:
 
 		Salva uma lista de compras existente no vetor de listas.
 	*/
-	void SalvarLista(Lista*);
+	void SalvarLista( Lista&);
 
 	/**
 		\brief Abre uma lista de compras
@@ -104,7 +104,7 @@ public:
 
 		Abre uma lista de compras existente do vetor de listas.
 	*/
-	void AbrirLista(Lista*);
+	void AbrirLista(unsigned int n);
 
 	/**
 		\brief Cria uma nova lista de compras

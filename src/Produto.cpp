@@ -1,6 +1,6 @@
 #include "Produto.hpp"
 
-Produto::Produto(int _codBarras, string _nome, float _preco, string _marca, int _qtd)
+Produto::Produto(int _codBarras, string _nome, double _preco, string _marca, int _qtd)
           : quantidade(_qtd)
           , codBarras(_codBarras)
           , nome(_nome)
@@ -25,11 +25,11 @@ void Produto::SetNome(string _nome){
      nome = _nome;
 }
 
-float Produto::GetPreco(void) const{
+double Produto::GetPreco(void) const{
      return preco;
 }
 
-void Produto::SetPreco(float _preco){
+void Produto::SetPreco(double _preco){
      preco = _preco;
 }
 
@@ -40,4 +40,5 @@ string Produto::GetMarca(void) const{
 void Produto::SetMarca(string _marca){
      marca = _marca;
 }
+
 
